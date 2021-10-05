@@ -3,11 +3,22 @@ import { Board } from '../Board/Board';
 import './Game.css';
 
 export const Game = () => {
+    const cellValues = ['','','','','','','','',''];
+    const winningCombination = [];
+
+    const onCellClicked = (cellIndex) => {
+        console.log(`Cell ${cellIndex} clicked.`);
+    }
+
     return (
         <>
             <div id="game">
                 <h1>Tic Tac Toe</h1>
-                <Board />
+                <Board 
+                cellValues={cellValues}
+                winningCombination={winningCombination}
+                cellClicked = {onCellClicked}
+                />
             </div>
 
             <div id="modal-overlay">
