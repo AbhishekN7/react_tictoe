@@ -6,8 +6,8 @@ export const Board = () => {
     return (
             <div id="board">
                 <Cell value="X"/>
-                <Cell value=""/>
-                <Cell value=""/>
+                <Cell value="X"/>
+                <Cell value="O"/>
                 <Cell value=""/>
                 <Cell value=""/>
                 <Cell value=""/>
