@@ -1,14 +1,19 @@
-import React from 'react';
+import React , {useState} from 'react';
 import { Board } from '../Board/Board';
 import './Game.css';
 
 export const Game = () => {
-    const cellValues = ['','','','','','','','',''];
+    const [cellValues, setCellValues] = useState(['','','','','','','','','']);
+    const [xIsNext , setxIsNext] = useState(true)
     const winningCombination = [];
 
     const onCellClicked = (cellIndex) => {
-        console.log(`Cell ${cellIndex} clicked.`);
-    }
+        const newCellValues = [...cellValues];
+
+        newCellValues[cellIndex] = xIsNext ? 'X' : 'O'
+        setCellValues(newCellValues);
+        setxIsNext(!xIsNext);
+    };
 
     return (
         <>
