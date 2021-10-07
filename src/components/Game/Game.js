@@ -1,18 +1,29 @@
 import React , {useState} from 'react';
 import { Board } from '../Board/Board';
+import { ResultModal } from '../Result/ResultModal';
 import './Game.css';
 
 export const Game = () => {
     const [cellValues, setCellValues] = useState(['','','','','','','','','']);
-    const [xIsNext , setxIsNext] = useState(true)
+    const [xIsNext , setxIsNext] = useState(true);
+    const [isGameOver , setisGameOver] = useState(false);
     const winningCombination = [];
 
+    const isCellEmpty = (cellIndex) => cellValues[cellIndex] === '';
+
     const onCellClicked = (cellIndex) => {
+        if (isCellEmpty(cellIndex)) {
+            
         const newCellValues = [...cellValues];
+
+        //Calculate the result
+        
 
         newCellValues[cellIndex] = xIsNext ? 'X' : 'O'
         setCellValues(newCellValues);
         setxIsNext(!xIsNext);
+        setisGameOver(true);
+        }
     };
 
     return (
@@ -25,19 +36,9 @@ export const Game = () => {
                 cellClicked = {onCellClicked}
                 />
             </div>
+            <ResultModal
+            isGameOver ={isGameOver} />
 
-            <div id="modal-overlay">
-                <div id="game-result-modal">
-                    <div id="result-container">
-                        <div id="winner-container">
-                            <span></span>
-                        </div>
-                    </div>
-                    <div id="new-game-container">
-                        <button id="new-game-button">Start New Game</button>
-                    </div>
-                </div>
-            </div>
         </>
     )
 }
