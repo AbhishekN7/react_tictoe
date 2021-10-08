@@ -15,14 +15,13 @@ export const Game = () => {
         if (isCellEmpty(cellIndex)) {
             
         const newCellValues = [...cellValues];
+        newCellValues[cellIndex] = xIsNext ? 'X' : 'O';
 
         //Calculate the result
-        
-
-        newCellValues[cellIndex] = xIsNext ? 'X' : 'O'
+        const calcResut = calculateWinner(newCellValues,cellIndex)
         setCellValues(newCellValues);
         setxIsNext(!xIsNext);
-        setisGameOver(true);
+        setisGameOver(calcResut);
         }
     };
 
