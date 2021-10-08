@@ -1,12 +1,14 @@
 import React , {useState} from 'react';
 import { Board } from '../Board/Board';
 import { ResultModal } from '../Result/ResultModal';
+import { calculateWinner } from '../../ultis/winnerCalculator';
 import './Game.css';
 
 export const Game = () => {
     const [cellValues, setCellValues] = useState(['','','','','','','','','']);
     const [xIsNext , setxIsNext] = useState(true);
     const [isGameOver , setisGameOver] = useState(false);
+    const [turnsLeft, setturnsLeft] = useState(9);
     const winningCombination = [];
 
     const isCellEmpty = (cellIndex) => cellValues[cellIndex] === '';
@@ -17,11 +19,14 @@ export const Game = () => {
         const newCellValues = [...cellValues];
         newCellValues[cellIndex] = xIsNext ? 'X' : 'O';
 
+        const newTurnsLeft = turnsLeft - 1;
+
         //Calculate the result
-        const calcResut = calculateWinner(newCellValues,cellIndex)
+        const calcResut = calculateWinner(newCellValues,newTurnsLeft,cellIndex)
         setCellValues(newCellValues);
         setxIsNext(!xIsNext);
-        setisGameOver(calcResut);
+        setisGameOver(calcResut.hasResult);
+        setturnsLeft(newTurnsLeft);
         }
     };
 
