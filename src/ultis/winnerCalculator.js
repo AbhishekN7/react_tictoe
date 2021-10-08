@@ -22,7 +22,7 @@ export const calculateWinner = (cellValues,turnsLeft,cellIndex) =>{
             return{
                 hasResult : true,
                 winner : currentValue,
-                winningcombination : [cellIndex, winningMatrix[i][0], winningRanges[i][1]]
+                winningCombination : [cellIndex, winningRanges[i][0], winningRanges[i][1]]
             };             
         }
         
