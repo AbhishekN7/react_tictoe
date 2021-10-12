@@ -1,7 +1,7 @@
 import React , {useState} from 'react';
 import { Board } from '../Board/Board';
 import { ResultModal } from '../Result/ResultModal';
-import { calculateWinner } from '../../ultis/winnerCalculator';
+import { calculateWinner } from '../../utils/winnerCalculator';
 import './Game.css';
 
 export const Game = () => {
